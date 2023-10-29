@@ -1,6 +1,5 @@
 # IMOGI
-Math-Oriented Project
-"***I*** ntuitive ***M*** athematical ***O*** bject ***G*** eneration ***I*** nterface"
+Math-Oriented Project ($Intuitive\ Mathematical\ Object\ Generation\ Interface$)
 
 App Name Ideas:
 
