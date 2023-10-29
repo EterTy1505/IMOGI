@@ -1,4 +1,4 @@
-<!-- Version 1.1 (Dark Theme) -->
+<!-- Version 1.2 (Dark Theme with Fontsize Slider) -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +20,7 @@
       border: 1px solid #ccc;
       padding: 10px;
       background-color: #333; /* Darker preview background */
+      font-size: 16px; /* Default fontsize */
     }
 
     #latexInput {
@@ -29,6 +30,10 @@
       background-color: #333; /* Darker input background */
       color: #fff; /* Input text color */
     }
+
+    #fontSizeSlider {
+      width: 80%;
+    }
   </style>
   <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -36,11 +41,18 @@
 </head>
 <body>
   <textarea id="latexInput" rows="5" cols="50"></textarea>
+  <input type="range" id="fontSizeSlider" min="10" max="32" value="16">
   <div id="preview"></div>
 
   <script>
     const latexInput = document.getElementById('latexInput');
     const preview = document.getElementById('preview');
+    const fontSizeSlider = document.getElementById('fontSizeSlider');
+
+    fontSizeSlider.addEventListener('input', function () {
+      const fontSize = fontSizeSlider.value + 'px';
+      preview.style.fontSize = fontSize;
+    });
 
     latexInput.addEventListener('input', function () {
       const latexCode = latexInput.value;
