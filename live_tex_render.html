@@ -1,0 +1,47 @@
+<!-- Version 1.0 -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #preview {
+      width: 80%;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    #latexInput {
+      width: 80%;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <textarea id="latexInput" rows="5" cols="50"></textarea>
+  <div id="preview"></div>
+
+  <script>
+    const latexInput = document.getElementById('latexInput');
+    const preview = document.getElementById('preview');
+
+    latexInput.addEventListener('input', function () {
+      const latexCode = latexInput.value;
+      preview.innerHTML = "\\[ " + latexCode + " \\]"; // Wrap input in display math delimiters
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, preview]);
+    });
+  </script>
+</body>
+</html>
