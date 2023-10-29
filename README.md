@@ -4,7 +4,7 @@ Math-Oriented Project
 
 App Name Ideas:
 
-- $Sigmath \ (\Sigma  \th)$
+- $Sigmath \ (\Sigma  th)$
 
 - $Mathwise$
 
