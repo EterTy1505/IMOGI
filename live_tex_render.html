@@ -1,64 +1,16 @@
-<!-- Version 1.2 (Dark Theme with Fontsize Slider) -->
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #222; /* Dark background color */
-      color: #fff; /* Text color */
-    }
-
-    #preview {
-      width: 80%;
-      text-align: center;
-      border: 1px solid #ccc;
-      padding: 10px;
-      background-color: #333; /* Darker preview background */
-      font-size: 16px; /* Default fontsize */
-    }
-
-    #latexInput {
-      width: 80%;
-      height: 100px;
-      margin-bottom: 20px;
-      background-color: #333; /* Darker input background */
-      color: #fff; /* Input text color */
-    }
-
-    #fontSizeSlider {
-      width: 80%;
-    }
-  </style>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
+  <meta charset="UTF-8">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Live Tex Render</title>
+  <link rel="icon" type="image/x-icon" href="favicon2.ico">
 </head>
 <body>
-  <textarea id="latexInput" rows="5" cols="50"></textarea>
-  <input type="range" id="fontSizeSlider" min="10" max="32" value="16">
+  <button id="themeSwitcher">🌙</button>
+  <textarea id="latexInput"></textarea>
   <div id="preview"></div>
-
-  <script>
-    const latexInput = document.getElementById('latexInput');
-    const preview = document.getElementById('preview');
-    const fontSizeSlider = document.getElementById('fontSizeSlider');
-
-    fontSizeSlider.addEventListener('input', function () {
-      const fontSize = fontSizeSlider.value + 'px';
-      preview.style.fontSize = fontSize;
-    });
-
-    latexInput.addEventListener('input', function () {
-      const latexCode = latexInput.value;
-      preview.innerHTML = "\\[ " + latexCode + " \\]"; // Wrap input in display math delimiters
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub, preview]);
-    });
-  </script>
+  <input id="fontSizeSlider" type="range">
 </body>
 </html>
