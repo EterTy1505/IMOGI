@@ -49,6 +49,8 @@ App Name Ideas:
 
 # Maybe's
 
+- A Command Line, sort of a mix between Matlab's Command Window and Desmos's sidebar (computational requests through dynamic managing of symbols).
+
 - Integrated Computational Engine (***Wolfram|Alpha APIs*** accepts $\LaTeX$ source code) so the user can skip the process of doing calculations himself.
 
 - Integrated Language Model (***ChatGPT***?) to help the user do something or use some tool that they're not comfortable with yet in the App
