@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    background-color: white;
+    font-family: monospace;
+}
+
+.matrix {
+    position: absolute;
+    display: flex;
+    background-color: #dddddd;
+    color: black;
+    font-size: 20px;
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+#states {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #888;
+    width: 100px;
+    height: 90px;
+    font-size: 20px;
+    align-items: center;
+}
+
+#themeToggle {
+    position: absolute;
+    background-color: #777;
+    width: 60px;
+    height: 40px;
+    right: 10px;
+    bottom: 10px;
+}
