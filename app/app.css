@@ -1,5 +1,15 @@
+@font-face {
+    font-family: 'Inter Bold';
+    src: url('C:\\Users\\Carlos Andres\\Code\\Projects\\IMOGI\\app\\fonts\\Inter-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('C:\\Users\\Carlos Andres\\Code\\Projects\\IMOGI\\app\\fonts\\Inter-Regular.ttf');
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', Courier;
 }
 
 #grid {
@@ -8,19 +18,57 @@ body {
     left: 0px;
 }
 
-.bar-title {
-    position: relative;
-    font-size: large;
+#sidebarToggle {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: #999;
 }
 
-#var-bar {
+.bar {
     position: fixed;
     left: 0px;
     top: 0px;
     width: 400px;
     height: 100%;
+    text-align: center;
     background-color: white;
     border-right: 2px solid #999;
     box-shadow: 0 0 30px #999;
-    transition: all ;
+}
+
+.bar-title {
+    position: relative;
+    top: 30px;
+    font-family: 'Inter Bold', Courier;
+    font-weight: 700;
+    font-size: 23pt;
+}
+
+.bar hr {
+    position: relative;
+    top: 50px;
+    width: 350px;
+}
+
+#obj-bar div {
+    display: flex;
+    position: relative;
+    top: 70px;
+    left: 50px;
+    width: 300px;
+    height: 70px;
+    align-items: center;
+    padding-left: 20px;
+    /* background-color: #999;
+    border: solid 1px black; */
+}
+
+#sym-bar div {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: solid 1px black;
 }
