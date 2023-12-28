@@ -73,8 +73,8 @@ function capitalize(word) {
 }
 
 /**
- * Creates the HTML Elements to make a generic Sidebar (i.e. its rectangle, title and
- * ruler).
+ * Creates the HTML Elements to make a Sidebar (i.e. a rectangle, title, ruler and
+ * collection display.
  * 
  * The result can be seen on the HTML file as this section being included inside the 
  * `body` element:
@@ -82,12 +82,14 @@ function capitalize(word) {
  * <div id="[type]-bar" class="bar">
  *     <span class="bar-title">[Type]</span>
  *     <hr>
+ *     <div>...</div>
+ *     <div>...</div>
  *     ...
  * </div>
  * ```
  * where `[type]` is the value of the given parameter (capitalized for the span
- * element), and the space after the horizontal ruler is left for the elements
- * collection to be added later by `get[Type]Bar()` functions.
+ * element), and the div's after the horizontal ruler represent each element in the
+ * requested bar's collection.
  * @param {string} type `["objects" | "symbols" | "variables"]`
  */
 function getBar(type) {
@@ -169,9 +171,33 @@ function toggleBar() {
     }
 }
 
-// TESTING
+// SIDEBAR TESTING
 let sidebarOn = false;
 let activeBar = "objects";
 
 const sidebarButton = document.getElementById("sidebarToggle");
 sidebarButton.addEventListener("click", () => toggleBar());
+
+// GRID FUNCTIONALITY
+var x_diff = 0;
+var y_diff = 0;
+const grid = document.getElementById("grid");
+var mouseDown = false;
+document.onmousedown = (event) => {
+    mouseDown = true;
+    // Grid Position getters rely on `top` and `left` being measured in px
+    var top = parseInt(window.getComputedStyle(grid).getPropertyValue("top").slice(0, -2));
+    var left = parseInt(window.getComputedStyle(grid).getPropertyValue("left").slice(0, -2));
+    var mouseX = event.x;
+    var mouseY = event.y;
+    x_diff = mouseX - left;
+    y_diff = mouseY - top;
+};
+document.onmouseup = () => mouseDown = false;
+document.onmousemove = (event) => {
+    if (mouseDown) {
+        grid.style.left = `${event.x - x_diff}px`;
+        grid.style.top = `${event.y - y_diff}px`;
+        console.log(top);
+    };
+};

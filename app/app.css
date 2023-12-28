@@ -10,12 +10,16 @@
 
 body {
     font-family: 'Inter', Courier;
+    overflow: clip;
 }
 
 #grid {
     position: absolute;
     top: 0px;
     left: 0px;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
 }
 
 #sidebarToggle {
