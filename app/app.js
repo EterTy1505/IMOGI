@@ -171,6 +171,7 @@ function toggleBar() {
     }
 }
 
+
 // SIDEBAR TESTING
 let sidebarOn = false;
 let activeBar = "objects";
@@ -178,26 +179,99 @@ let activeBar = "objects";
 const sidebarButton = document.getElementById("sidebarToggle");
 sidebarButton.addEventListener("click", () => toggleBar());
 
+
 // GRID FUNCTIONALITY
-var x_diff = 0;
-var y_diff = 0;
-const grid = document.getElementById("grid");
 var mouseDown = false;
+var [gridLeft, gridTop] = [0, 0];
+var [currentX, currentY] = [null, null];
+var x_diff, y_diff, initialMouseX, initialMouseY, finalMouseX, finalMouseY;
+
+// Create 3x3 Grid Block to simulate infinite grid
+const grid = document.getElementById("grid");
+for (let i = 0; i < 9; i++) {
+    const gridImage = document.createElement("img");
+    gridImage.setAttribute("src", "images/Grid.png");
+    gridImage.setAttribute("alt", "what");
+    gridImage.style.top = `${1080 * (i%3)}px`;
+    gridImage.style.left = `${1920 * (Math.floor(i/3))}px`;
+    grid.appendChild(gridImage)
+}
+
+// Grid Dragging
 document.onmousedown = (event) => {
+    // Get the position of the Grid and the Mouse separately when clicked
+    // Getting Grid position relies on it being measured in px
+    gridLeft = parseInt(window.getComputedStyle(grid).getPropertyValue("left").slice(0, -2));
+    gridTop = parseInt(window.getComputedStyle(grid).getPropertyValue("top").slice(0, -2));
+    initialMouseX = event.x;
+    initialMouseY = event.y;
+    x_diff = initialMouseX - gridLeft;
+    y_diff = initialMouseY - gridTop;
     mouseDown = true;
-    // Grid Position getters rely on `top` and `left` being measured in px
-    var top = parseInt(window.getComputedStyle(grid).getPropertyValue("top").slice(0, -2));
-    var left = parseInt(window.getComputedStyle(grid).getPropertyValue("left").slice(0, -2));
-    var mouseX = event.x;
-    var mouseY = event.y;
-    x_diff = mouseX - left;
-    y_diff = mouseY - top;
+
+    updateDebugBlock();
 };
-document.onmouseup = () => mouseDown = false;
 document.onmousemove = (event) => {
     if (mouseDown) {
         grid.style.left = `${event.x - x_diff}px`;
         grid.style.top = `${event.y - y_diff}px`;
-        console.log(top);
     };
+
+    updateDebugBlock();
 };
+document.onmouseup = (event) => {
+    finalMouseX = event.x;
+    finalMouseY = event.y;
+
+    // fLeft(x) = -1920 + (-1920 + gridLeft + x (mod 20)) mod 20
+    // fRight(x) = ...
+    // fLeft: R |-> [-1920, -1901], fRight: R |-> [-1080, -1061]
+    grid.style.left = `${-1920 + (-1920 + gridLeft + (finalMouseX-initialMouseX)%20)%20}px`;
+    grid.style.top = `${-1080 + (-1080 + gridTop + (finalMouseY-initialMouseY)%20)%20}px`;
+    mouseDown = false;
+    currentX += finalMouseX - initialMouseX;
+    currentY += finalMouseY - initialMouseY;
+
+    updateDebugBlock();
+};
+
+
+// Debug Block to keep track of specific variables
+var debugModeOn = true;
+
+const debugVariables = [
+    "currentX",
+    "currentY",
+    "gridLeft",
+    "gridTop",
+    "initialMouseX",
+    "finalMouseX",
+    "initialMouseY",
+    "finalMouseY",
+];
+const debugDiv = document.getElementById("debug");
+if (debugModeOn) {
+    // Create Div
+    const debugDiv = document.createElement("div");
+    debugDiv.setAttribute("id", "debug");
+    debugDiv.setAttribute("class", "debug");
+    body.appendChild(debugDiv);
+
+    // Fill Div with debugVariables
+    for (const variable of debugVariables) {
+    const variableDiv = document.createElement("div");
+    variableDiv.setAttribute("id", variable);
+    const variableText = document.createTextNode(`${variable} = ${eval(variable)}`);
+    debugDiv.appendChild(variableDiv);
+    variableDiv.appendChild(variableText);
+    }
+}
+
+function updateDebugBlock() {
+    if (debugModeOn) {
+        for (const variable of debugVariables) {
+            const variableDiv = document.getElementById(variable)
+            variableDiv.textContent = `${variable} = ${eval(variable)}`;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "Unnamed Workspace": {
+        "name": "Unnamed Workspace",
+        "objects": {
+            "functions": null,
+            "matrices": null,
+            "sequences": null,
+            "graphs": null,
+            "custom": null
+        },
+        "gridPos": {
+            "currentX": 0,
+            "currentY": 0
+        },
+        "theme": "light",
+        "sidebarOn": true,
+        "currentBar": "objects"
+    }
+}

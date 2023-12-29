@@ -1,0 +1,14 @@
+{
+    "screen": {
+        "width": 1920,
+        "height": 1200
+    },
+    "browser": {
+        "width": 1920,
+        "height": 1065
+    },
+    "grid": {
+        "unit-width": 20,
+        "unit-height": 20
+    }
+}

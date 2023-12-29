@@ -13,13 +13,37 @@ body {
     overflow: clip;
 }
 
+div.debug {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background-color: black;
+    opacity: 0.8;
+    text-align: center;
+    padding: 20px;
+    user-select: none;
+}
+
+div.debug div {
+    height: 30px;
+    font-size: 15pt;
+    color: white;
+}
+
 #grid {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    opacity: 1;
+    margin: 0;
+    top: -1080px;
+    left: -1920px;
+    width: calc(3 * 1920px);
+    height: calc(3 * 1080px);
+    opacity: 0.3;
     pointer-events: none;
     user-select: none;
+}
+
+#grid img {
+    position: absolute;
 }
 
 #sidebarToggle {
@@ -41,6 +65,8 @@ body {
     background-color: white;
     border-right: 2px solid #999;
     box-shadow: 0 0 30px #999;
+    user-select: none;
+    pointer-events: none;
 }
 
 .bar-title {

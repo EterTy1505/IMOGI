@@ -50,4 +50,8 @@ These are ideas I come up with that I think would be cool to have in the product
   
   - A **Linear Regression** workspace, where you can input your desired setup, and have it display all the required computations needed to arrive to a solution, with the involving matrices, systems of equations, and its changes, all being shown on screen. This would serve both as an explainer AND solver. It could come as a pre-built downloadable add-on, to set the standard for the use of the workshop in the community.
 
-- 
+- *Recording Feature*: Have a tool to record a section of the current workspace screen, and allow to paste and display that same recording anywhere inside the grid.
+
+- *Special Variables*: Have a list of variables, that when created, and after pressing a specific hotkey, come to represent actual aspects of the application such as the current grid position, or theme.
+  
+  - [currentGridPos = (x, y), theme, ...]
