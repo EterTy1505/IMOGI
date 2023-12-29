@@ -24,6 +24,8 @@ units_in_width = GRID_UNIT_WIDTH * ceil(SCREEN_WIDTH/GRID_UNIT_WIDTH)
 units_in_height = GRID_UNIT_HEIGHT * ceil(BROWSER_HEIGHT/GRID_UNIT_HEIGHT)
 full_grid = Image.new("RGBA", (units_in_width, units_in_height))
 
+print("Processing Grid...")
+
 # Repeatedly paste the Grid Unit on the output image
 for x in range(units_in_width):
     x_pos = GRID_UNIT_WIDTH * x
@@ -31,8 +33,10 @@ for x in range(units_in_width):
         y_pos = GRID_UNIT_HEIGHT * y
         full_grid.paste(grid_unit, (x_pos, y_pos))
 
-print("Completed Processing.\n")
+print("Grid Completed.")
+print("Saving Grid Image...")
 
 full_grid.save(r"C:\Users\Carlos Andres\Code\Projects\IMOGI\app\images\Grid.png")
+
 print("The Grid image has been successfully created.\n\
 (saved as \"app/images/Grid.png\")")
